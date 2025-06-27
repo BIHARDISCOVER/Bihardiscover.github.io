@@ -1,2 +1,2 @@
-# Bihardiscover.github.io
+# exploreBihar.github.io
 breath bihar
