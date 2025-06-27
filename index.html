@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discover Bihar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #f8f9fa;
+    }
+    header {
+      background-color: #8B0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      padding: 30px;
+    }
+    h1 {
+      margin: 0;
+    }
+    #drop-zone {
+      border: 2px dashed #8B0000;
+      padding: 40px;
+      text-align: center;
+      background-color: #fff;
+      margin-top: 20px;
+    }
+    #file-info {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Discover Bihar</h1>
+    <p>Explore the rich heritage and culture of Bihar, India</p>
+  </header>
+
+  <div class="content">
+    <h2>Upload Your Travel Photos</h2>
+    <div id="drop-zone">
+      <p>📁 Drag & drop your file here</p>
+      <p>or</p>
+      <input type="file" id="fileInput" />
+    </div>
+    <div id="file-info"></div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById("drop-zone");
+    const fileInput = document.getElementById("fileInput");
+    const fileInfo = document.getElementById("file-info");
+
+    dropZone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropZone.style.background = "#e0ffe0";
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.style.background = "#fff";
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropZone.style.background = "#fff";
+      const file = e.dataTransfer.files[0];
+      showFile(file);
+    });
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      showFile(file);
+    });
+
+    function showFile(file) {
+      if (file) {
+        fileInfo.innerHTML = `Selected file: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+      }
+    }
+  </script>
+</body>
+</html>
